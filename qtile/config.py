@@ -96,8 +96,8 @@ for vt in range(1, 8):
         )
     )
 
-
-groups = [Group(i) for i in "123456789"]
+groups = []
+groups = [Group(i) for i in "1234"]
 
 for i in groups:
     keys.extend(
@@ -123,47 +123,120 @@ for i in groups:
         ]
     )
 
+
+layout_theme = {
+    
+}
+
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.Max(),
+    # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    # layout.MonadTall(),
+    layout.MonadTall(),
+    layout.Max(),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
-    # layout.TreeTab(),
+    layout.TreeTab(
+        font = "JetBrains Mono",
+        fontsize = 10,
+        sections = ["FIRST", "SECOND"],
+        border_width = 2,
+        bg_color = "1c1f24",
+        active_bg = "c678dd",
+        active_fg = "000000",
+        inactive_bg = "a9a1e1",
+        inactive_fg = "1c1f24",
+        padding_left = 0,
+        padding_x = 0,
+        padding_y = 5,
+        section_top = 10,
+        section_bottom = 20,
+        level_shift = 8,
+        vspace = 3,
+        panel_width = 200
+    ),
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
 
+colors = [
+    "#084959", # Panel Background Dark
+    "#ffffff", # Groub Box Font Color
+    "#dc4c4c", # Current Group Back
+    "#d1af61", # Text 
+    "#ffffff", # Active Group Font 
+    "#562f46", # Inactive Group Font
+]
+
 widget_defaults = dict(
-    font="JetBrains Mono",
-    fontsize=12,
-    padding=3,
+    font="JetBrainsMono NF Bold",
+    fontsize=13,
+    padding=5,
 )
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
+                widget.CurrentLayout(
+                    **widget_defaults,
+                    background = colors[0],
                 ),
+               widget.GroupBox(
+                    disable_drag = True,
+                    rounded = False,
+                    font = "JetBrainsMono NF Bold",
+                    fontsize = 13,
+                    # padding = 5,
+                    padding_x = 10,
+                    highlight_method = "block",
+                    background = colors[0],
+                    foreground = colors[1],
+                    this_current_screen_border = colors[2],
+                    active=colors[-2],
+                    inactive=colors[-1],
+                ),
+                widget.Prompt(
+                    **widget_defaults,
+                    background = colors[0],
+                ),
+                widget.WindowName(
+                    **widget_defaults,
+                    background = colors[0],
+                    foreground = colors[3],
+                ),
+                # widget.Chord(
+                #     chords_colors={
+                #        "launch": tuple(colors[0]),
+                #     },
+                #     name_transform=lambda name: name.upper(),
+                # ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                # widget.Systray(
+                #     **widget_defaults,
+                #     padding=5,
+                # ),
+                widget.Battery(
+                    **widget_defaults,
+                    background = colors[0],
+                    foreground = colors[3],
+                    charge_controller = lambda: (0, 95),
+                ),
+                widget.Net(
+                    **widget_defaults,
+                    background = colors[0],
+                    format = "{down} \u2193\u2191 {up}",
+                ),
+                widget.Clock(
+                    **widget_defaults,
+                    background = colors[2],
+                    format="%Y-%m-%d %a %I:%M %p"
+                ),
             ],
             24,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders

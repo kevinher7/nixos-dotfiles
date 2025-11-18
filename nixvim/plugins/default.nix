@@ -13,6 +13,10 @@
 
     plugins = {
       transparent.enable = true;
+      web-devicons.enable = true;
+      nvim-autopairs.enable = true;
+      none-ls.enable = true;
+      nvim-surround.enable = true;
     };
   };
 }
