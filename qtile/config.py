@@ -163,13 +163,17 @@ layouts = [
 ]
 
 colors = [
-    "#292d3e", # Panel Background
-    "#ffffff", # Group Box Font Color
+    "#084959", # Panel Background Dark
+    "#ffffff", # Groub Box Font Color
+    "#dc4c4c", # Current Group Back
+    "#d1af61", # Text 
+    "#ffffff", # Active Group Font 
+    "#562f46", # Inactive Group Font
 ]
 
 widget_defaults = dict(
-    font="JetBrainsMono NF",
-    fontsize=12,
+    font="JetBrainsMono NF Bold",
+    fontsize=13,
     padding=5,
 )
 extension_defaults = widget_defaults.copy()
@@ -183,11 +187,18 @@ screens = [
                     background = colors[0],
                 ),
                widget.GroupBox(
-                    **widget_defaults,
                     disable_drag = True,
+                    rounded = False,
+                    font = "JetBrainsMono NF Bold",
+                    fontsize = 13,
+                    # padding = 5,
+                    padding_x = 10,
                     highlight_method = "block",
                     background = colors[0],
                     foreground = colors[1],
+                    this_current_screen_border = colors[2],
+                    active=colors[-2],
+                    inactive=colors[-1],
                 ),
                 widget.Prompt(
                     **widget_defaults,
@@ -196,6 +207,7 @@ screens = [
                 widget.WindowName(
                     **widget_defaults,
                     background = colors[0],
+                    foreground = colors[3],
                 ),
                 # widget.Chord(
                 #     chords_colors={
@@ -212,6 +224,7 @@ screens = [
                 widget.Battery(
                     **widget_defaults,
                     background = colors[0],
+                    foreground = colors[3],
                     charge_controller = lambda: (0, 95),
                 ),
                 widget.Net(
@@ -221,7 +234,7 @@ screens = [
                 ),
                 widget.Clock(
                     **widget_defaults,
-                    background = colors[0],
+                    background = colors[2],
                     format="%Y-%m-%d %a %I:%M %p"
                 ),
             ],
