@@ -1,6 +1,7 @@
-{
+{pkgs, ...}: {
   imports = [
     ./telescope.nix
+    ./lsp.nix
   ];
 
   programs.nixvim = {
