@@ -43,14 +43,23 @@ keys = [
     Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
+    Key(
+        [mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"
+    ),
+    Key(
+        [mod, "shift"],
+        "l",
+        lazy.layout.shuffle_right(),
+        desc="Move window to the right",
+    ),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
     Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+    Key(
+        [mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"
+    ),
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
@@ -74,7 +83,12 @@ keys = [
         lazy.window.toggle_fullscreen(),
         desc="Toggle fullscreen on the focused window",
     ),
-    Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
+    Key(
+        [mod],
+        "t",
+        lazy.window.toggle_floating(),
+        desc="Toggle floating on the focused window",
+    ),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
@@ -124,9 +138,7 @@ for i in groups:
     )
 
 
-layout_theme = {
-    
-}
+layout_theme = {}
 
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
@@ -140,35 +152,35 @@ layouts = [
     # layout.RatioTile(),
     # layout.Tile(),
     layout.TreeTab(
-        font = "JetBrains Mono",
-        fontsize = 10,
-        sections = ["FIRST", "SECOND"],
-        border_width = 2,
-        bg_color = "1c1f24",
-        active_bg = "c678dd",
-        active_fg = "000000",
-        inactive_bg = "a9a1e1",
-        inactive_fg = "1c1f24",
-        padding_left = 0,
-        padding_x = 0,
-        padding_y = 5,
-        section_top = 10,
-        section_bottom = 20,
-        level_shift = 8,
-        vspace = 3,
-        panel_width = 200
+        font="JetBrains Mono",
+        fontsize=10,
+        sections=["FIRST", "SECOND"],
+        border_width=2,
+        bg_color="1c1f24",
+        active_bg="c678dd",
+        active_fg="000000",
+        inactive_bg="a9a1e1",
+        inactive_fg="1c1f24",
+        padding_left=0,
+        padding_x=0,
+        padding_y=5,
+        section_top=10,
+        section_bottom=20,
+        level_shift=8,
+        vspace=3,
+        panel_width=200,
     ),
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
 
 colors = [
-    "#084959", # Panel Background Dark
-    "#ffffff", # Groub Box Font Color
-    "#dc4c4c", # Current Group Back
-    "#d1af61", # Text 
-    "#ffffff", # Active Group Font 
-    "#562f46", # Inactive Group Font
+    "#084959",  # Panel Background Dark
+    "#ffffff",  # Groub Box Font Color
+    "#dc4c4c",  # Current Group Back
+    "#d1af61",  # Text
+    "#ffffff",  # Active Group Font
+    "#562f46",  # Inactive Group Font
 ]
 
 widget_defaults = dict(
@@ -184,30 +196,30 @@ screens = [
             [
                 widget.CurrentLayout(
                     **widget_defaults,
-                    background = colors[0],
+                    background=colors[0],
                 ),
-               widget.GroupBox(
-                    disable_drag = True,
-                    rounded = False,
-                    font = "JetBrainsMono NF Bold",
-                    fontsize = 13,
+                widget.GroupBox(
+                    disable_drag=True,
+                    rounded=False,
+                    font="JetBrainsMono NF Bold",
+                    fontsize=13,
                     # padding = 5,
-                    padding_x = 10,
-                    highlight_method = "block",
-                    background = colors[0],
-                    foreground = colors[1],
-                    this_current_screen_border = colors[2],
+                    padding_x=10,
+                    highlight_method="block",
+                    background=colors[0],
+                    foreground=colors[1],
+                    this_current_screen_border=colors[2],
                     active=colors[-2],
                     inactive=colors[-1],
                 ),
                 widget.Prompt(
                     **widget_defaults,
-                    background = colors[0],
+                    background=colors[0],
                 ),
                 widget.WindowName(
                     **widget_defaults,
-                    background = colors[0],
-                    foreground = colors[3],
+                    background=colors[0],
+                    foreground=colors[3],
                 ),
                 # widget.Chord(
                 #     chords_colors={
@@ -223,19 +235,19 @@ screens = [
                 # ),
                 widget.Battery(
                     **widget_defaults,
-                    background = colors[0],
-                    foreground = colors[3],
-                    charge_controller = lambda: (0, 95),
+                    background=colors[0],
+                    foreground=colors[3],
+                    charge_controller=lambda: (0, 95),
                 ),
                 widget.Net(
                     **widget_defaults,
-                    background = colors[0],
-                    format = "{down} \u2193\u2191 {up}",
+                    background=colors[0],
+                    format="{down} \u2193\u2191 {up}",
                 ),
                 widget.Clock(
                     **widget_defaults,
-                    background = colors[2],
-                    format="%Y-%m-%d %a %I:%M %p"
+                    background=colors[2],
+                    format="%Y-%m-%d %a %I:%M %p",
                 ),
             ],
             24,
@@ -251,8 +263,15 @@ screens = [
 
 # Drag floating layouts.
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Drag(
+        [mod],
+        "Button1",
+        lazy.window.set_position_floating(),
+        start=lazy.window.get_position(),
+    ),
+    Drag(
+        [mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()
+    ),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
