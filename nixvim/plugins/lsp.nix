@@ -13,9 +13,9 @@
           notify_on_error = true;
 
           formatters_by_ft = {
-            python = ["ruff_format"];
-            c = ["clang_format"];
-            nix = ["nixpkgs_fmt"];
+            python = [ "ruff_format" ];
+            c = [ "clang_format" ];
+            nix = [ "nixpkgs_fmt" ];
           };
         };
       };
@@ -48,11 +48,11 @@
         servers = {
           ruff = {
             enable = true;
-            filetypes = ["python"];
+            filetypes = [ "python" ];
           };
           clangd.enable = true; # C & C++
         };
       };
-   };
+    };
   };
 }
