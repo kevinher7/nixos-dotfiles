@@ -6,25 +6,40 @@
       have_nerd_font = true;
     };
 
-    keymaps =
-    [
+    keymaps = [
+
+      {
+        mode = "n";
+        key = "<Esc>";
+        action = "<cmd>nohlsearch<CR>";
+      }
+      # Telescope
       {
         action = ":Telescope live_grep<CR>";
-	key = "<leader>sg";
-	options = {
+        key = "<leader>sg";
+        options = {
           silent = true;
-	  noremap = true;
-	  desc = "Search grep";
-	};
+          noremap = true;
+          desc = "[S]earch [g]rep";
+        };
       }
       {
         action = ":Telescope find_files<CR>";
-	key = "<leader>sf";
-	options = {
+        key = "<leader>sf";
+        options = {
           silent = true;
-	  noremap = true;
-	  desc = "Search files";
-	};
+          noremap = true;
+          desc = "[S]earch [f]iles";
+        };
+      }
+      {
+        action = ":Telescope keymaps<CR>";
+        key = "<leader>sk";
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "[S]earch [k]eymaps";
+        };
       }
     ];
   };
