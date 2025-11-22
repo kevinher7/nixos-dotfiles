@@ -7,7 +7,6 @@
     };
 
     keymaps = [
-
       {
         mode = "n";
         key = "<Esc>";
