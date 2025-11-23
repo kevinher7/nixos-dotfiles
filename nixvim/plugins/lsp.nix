@@ -42,7 +42,6 @@
 
             "<leader>cr" = "rename";
           };
-
         };
 
         servers = {
@@ -51,6 +50,7 @@
             filetypes = [ "python" ];
           };
           clangd.enable = true; # C & C++
+          nixd.enable = true;
         };
       };
     };

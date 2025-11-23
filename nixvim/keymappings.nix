@@ -8,9 +8,14 @@
 
     keymaps = [
       {
-        mode = "n";
-        key = "<Esc>";
         action = "<cmd>nohlsearch<CR>";
+        key = "<Esc>";
+        options =
+          {
+            silent = true;
+            noremap = true;
+            desc = "Clean hlsearch";
+          };
       }
       # Telescope
       {
