@@ -95,6 +95,7 @@ keys = [
     Key([mod], "b", lazy.spawn("firefox")),
     Key([mod, "shift"], "f", lazy.spawn("pcmanfm")),
     Key([mod], "d", lazy.spawn("rofi -show drun")),
+    Key([mod, "shift"], "l", lazy.spawn("xsecurelock")),
 ]
 
 # Add key bindings to switch VTs in Wayland.
