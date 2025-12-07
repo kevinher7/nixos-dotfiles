@@ -37,7 +37,7 @@ c.auto_save.interval = 15000
 ## session which was last loaded. This behavior can be customized via the
 ## `session.default_name` setting.
 ## Type: Bool
-c.auto_save.session = False
+c.auto_save.session = True
 
 ## Backend to use to display websites. qutebrowser supports two different
 ## web rendering engines / backends, QtWebEngine and QtWebKit (not
@@ -535,7 +535,7 @@ c.colors.webpage.darkmode.contrast = 0.0
 ## `colors.webpage.darkmode.policy.images` to `never`.  - "With selective
 ## image inversion": qutebrowser default settings.
 ## Type: Bool
-c.colors.webpage.darkmode.enabled = False
+c.colors.webpage.darkmode.enabled = True
 
 ## Which images to apply dark mode to.
 ## Type: String
@@ -544,7 +544,7 @@ c.colors.webpage.darkmode.enabled = False
 ##   - never: Never apply dark mode filter to any images.
 ##   - smart: Apply dark mode based on image content. Not available with Qt 5.15.0.
 ##   - smart-simple: On QtWebEngine 6.6, use a simpler algorithm for smart mode (based on numbers of colors and transparency), rather than an ML-based model. Same as 'smart' on older QtWebEnigne versions.
-c.colors.webpage.darkmode.policy.images = "smart"
+c.colors.webpage.darkmode.policy.images = "never"
 
 ## Which pages to apply dark mode to. The underlying Chromium setting has
 ## been removed in QtWebEngine 5.15.3, thus this setting is ignored
